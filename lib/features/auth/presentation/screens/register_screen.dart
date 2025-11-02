@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teslo_shop/features/shared/shared.dart';
@@ -116,6 +117,40 @@ class _RegisterForm extends StatelessWidget {
             )
           ),
 
+          const SizedBox( height: 20 ),
+
+          // Texto de términos y condiciones
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: textStyles.bodySmall?.copyWith(
+                  color: Colors.grey[600],
+                  height: 1.5,
+                ),
+                children: [
+                  const TextSpan(
+                    text: 'Al dar clic en \'Crear\' aceptas el ',
+                  ),
+                  TextSpan(
+                    text: 'Aviso de términos y condiciones de uso de datos personales',
+                    style: TextStyle(
+                      color: Colors.blue[700],
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // Navegar a la pantalla de términos y condiciones
+                        context.push('/terms-and-conditions');
+                      },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          
           const Spacer( flex: 2 ),
 
           Row(
